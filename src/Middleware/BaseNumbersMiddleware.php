@@ -51,16 +51,6 @@ abstract class BaseNumbersMiddleware extends TransformsRequest
     }
 
     /**
-     * check if transform from (arabic|english) to eastern.
-     *
-     * @return bool
-     */
-    public function isFromArabic()
-    {
-        return $this->from == 'arabic';
-    }
-
-    /**
      * Transform the given value.
      *
      * @param  string $key
@@ -90,7 +80,7 @@ abstract class BaseNumbersMiddleware extends TransformsRequest
     /**
      * get array numbers to transforms.
      *
-     * @return string
+     * @return array
      */
     protected function getNumbers()
     {
@@ -104,7 +94,7 @@ abstract class BaseNumbersMiddleware extends TransformsRequest
      */
     public function isFromEastern()
     {
-        return $this->from == 'eastern';
+        return $this->from === 'eastern';
     }
 
     /**

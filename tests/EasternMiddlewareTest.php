@@ -33,16 +33,21 @@ class EasternMiddlewareTest extends TestCase
     /** @test */
     public function it_will_skip_transform_numbers_to_arabic_with_ignore_fields_from_inline()
     {
-        $this->auto_register_middleware = false;
-        $this->refreshApp();
+        $this->refreshApp(false);
         $this->post('login-eastern-to-arabic-ignore-pass-field-inline', $this->easternTestData)->assertJson(['login' => '0500484350', 'pass' => '١٢٣٤٥٦']);
     }
 
     /** @test */
     public function it_will_not_transform_numbers_to_arabic_without_auto_append_middleware()
     {
-        $this->auto_register_middleware = false;
-        $this->refreshApp();
+        $this->refreshApp(false);
         $this->post('login-eastern-to-arabic-auto-append', $this->easternTestData)->assertExactJson($this->easternTestData);
     }
+
+//    /** @test */
+//    public function it_will_transform_numbers_to_arabic_with_auto_append_middleware_to_route_group()
+//    {
+//        $this->refreshApp(['web']);
+//        $this->post('login-eastern-to-arabic-auto-append-to-route-group', $this->easternTestData)->assertExactJson($this->arabicTestData);
+//    }
 }

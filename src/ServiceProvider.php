@@ -16,7 +16,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     protected $middleware = [
         'arabic-to-eastern' => TransformArabicToEasternNumbers::class,
-        'eastern-to-arabic' => TransformEasternToArabicNumbers::class,
+        'eastern-to-arabic' => TransformEasternToArabicNumbers::class
     ];
 
     /**
@@ -37,6 +37,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     protected $auto_middleware;
 
+
     /**
      * Perform post-registration booting of services.
      *
@@ -51,40 +52,38 @@ class ServiceProvider extends BaseServiceProvider
         $this->autoAppendMiddleware();
     }
 
+
     /**
      * auto append middleware to router.
-     *
-     * @return Collection|bool
      */
     protected function autoAppendMiddleware()
     {
         $this->groupMiddleware = $this->app['config']->get('arabic-numbers-middleware.auto_register_middleware', false);
+        $this->auto_middleware = $this->app['config']->get('arabic-numbers-middleware.auto_middleware', false);
 
-        if ($this->groupMiddleware === false) {
-            return false;
+        if ($this->groupMiddleware === false || $this->auto_middleware === false) {
+            return;
         }
 
-        $this->auto_middleware = collect($this->app['config']->get('arabic-numbers-middleware.auto_middleware', []));
-
-        // Register as global Middleware
-        if ($this->groupMiddleware === true) {
-            $kernel = $this->app->make('Illuminate\Contracts\Http\Kernel');
-
-            return $this->auto_middleware->each(function ($middleware) use ($kernel) {
-                $kernel->pushMiddleware($middleware);
-            });
+        if ($this->groupMiddleware === true) { // Register middleware as global Middleware
+            $this->app->make('Illuminate\Contracts\Http\Kernel')->pushMiddleware($this->auto_middleware);
+        } else if (is_array($this->groupMiddleware) && count($this->groupMiddleware) > 0) { // Register Middleware for route group
+            $this->pushMiddlewareToGroups($this->auto_middleware);
         }
 
-        // Register Middleware for group
-        if (is_array($this->groupMiddleware) && count($this->groupMiddleware) > 0) {
-            return $this->auto_middleware->each(function ($middleware) {
-                foreach ($this->groupMiddleware as $group) {
-                    $this->app['router']->prependMiddlewareToGroup($group, $middleware);
-                }
-            });
-        }
+        return;
+    }
 
-        return false;
+    /**
+     * push middleware to route groups.
+     *
+     * @param $middleware
+     */
+    function pushMiddlewareToGroups($middleware)
+    {
+        foreach ($this->groupMiddleware as $group) {
+            $this->app['router']->pushMiddlewareToGroup($group, $middleware);
+        }
     }
 
     /**

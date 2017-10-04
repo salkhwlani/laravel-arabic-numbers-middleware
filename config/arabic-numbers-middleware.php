@@ -21,9 +21,7 @@ return [
      |
      |  Supported Middleware: "arabic-to-eastern", "eastern-to-arabic"
      */
-    'auto_middleware' => [
-        Yemenifree\LaravelArabicNumbersMiddleware\Middleware\TransformEasternToArabicNumbers::class,
-    ],
+    'auto_middleware' => Yemenifree\LaravelArabicNumbersMiddleware\Middleware\TransformEasternToArabicNumbers::class,
 
     /*
      |--------------------------------------------------------------------------
