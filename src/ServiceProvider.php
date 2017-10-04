@@ -2,7 +2,6 @@
 
 namespace Yemenifree\LaravelArabicNumbersMiddleware;
 
-use Illuminate\Support\Collection;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Yemenifree\LaravelArabicNumbersMiddleware\Middleware\TransformArabicToEasternNumbers;
 use Yemenifree\LaravelArabicNumbersMiddleware\Middleware\TransformEasternToArabicNumbers;
@@ -33,7 +32,7 @@ class ServiceProvider extends BaseServiceProvider
     /**
      * auto append middleware.
      *
-     * @var Collection
+     * @var array
      */
     protected $auto_middleware;
 
@@ -65,18 +64,22 @@ class ServiceProvider extends BaseServiceProvider
 
         if ($this->groupMiddleware === true) { // Register middleware as global Middleware
             $this->app->make('Illuminate\Contracts\Http\Kernel')->pushMiddleware($this->auto_middleware);
-        } elseif (is_array($this->groupMiddleware) && count($this->groupMiddleware) > 0) { // Register Middleware for route group
-            $this->pushMiddlewareToGroups($this->auto_middleware);
         }
+
+        // Register Middleware for route group
+        $this->pushMiddlewareToGroups($this->auto_middleware);
     }
 
     /**
      * push middleware to route groups.
      *
-     * @param $middleware
+     * @param array $middleware
      */
     public function pushMiddlewareToGroups($middleware)
     {
+        if (!is_array($this->groupMiddleware))
+            return;
+
         foreach ($this->groupMiddleware as $group) {
             $this->app['router']->pushMiddlewareToGroup($group, $middleware);
         }
