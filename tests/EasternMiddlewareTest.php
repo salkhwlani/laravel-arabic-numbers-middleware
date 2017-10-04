@@ -2,10 +2,8 @@
 
 namespace Yemenifree\LaravelArabicNumbersMiddleware\Test;
 
-
 class EasternMiddlewareTest extends TestCase
 {
-
     /** @test */
     public function it_will_transform_numbers_to_arabic_with_auto_append_middleware()
     {

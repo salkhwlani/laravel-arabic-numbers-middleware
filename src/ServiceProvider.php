@@ -16,11 +16,11 @@ class ServiceProvider extends BaseServiceProvider
      */
     protected $middleware = [
         'arabic-to-eastern' => TransformArabicToEasternNumbers::class,
-        'eastern-to-arabic' => TransformEasternToArabicNumbers::class
+        'eastern-to-arabic' => TransformEasternToArabicNumbers::class,
     ];
 
     /**
-     * list of group middleware to auto append middleware to them
+     * list of group middleware to auto append middleware to them.
      *
      *      true => all groups
      *      false => none
@@ -31,12 +31,11 @@ class ServiceProvider extends BaseServiceProvider
     protected $groupMiddleware = false;
 
     /**
-     * auto append middleware
+     * auto append middleware.
      *
      * @var Collection
      */
     protected $auto_middleware;
-
 
     /**
      * Perform post-registration booting of services.
@@ -46,14 +45,14 @@ class ServiceProvider extends BaseServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../config/arabic-numbers-middleware.php' => config_path('arabic-numbers-middleware.php'),
+            __DIR__.'/../config/arabic-numbers-middleware.php' => config_path('arabic-numbers-middleware.php'),
         ], 'config');
 
         $this->autoAppendMiddleware();
     }
 
     /**
-     * auto append middleware to router
+     * auto append middleware to router.
      *
      * @return Collection|bool
      */
@@ -61,14 +60,16 @@ class ServiceProvider extends BaseServiceProvider
     {
         $this->groupMiddleware = $this->app['config']->get('arabic-numbers-middleware.auto_register_middleware', false);
 
-        if ($this->groupMiddleware === false)
+        if ($this->groupMiddleware === false) {
             return false;
+        }
 
         $this->auto_middleware = collect($this->app['config']->get('arabic-numbers-middleware.auto_middleware', []));
 
         // Register as global Middleware
         if ($this->groupMiddleware === true) {
             $kernel = $this->app->make('Illuminate\Contracts\Http\Kernel');
+
             return $this->auto_middleware->each(function ($middleware) use ($kernel) {
                 $kernel->pushMiddleware($middleware);
             });
@@ -93,12 +94,12 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/arabic-numbers-middleware.php', 'arabic-numbers-middleware');
+        $this->mergeConfigFrom(__DIR__.'/../config/arabic-numbers-middleware.php', 'arabic-numbers-middleware');
         $this->registerAliasMiddleware();
     }
 
     /**
-     *  register alias middleware
+     *  register alias middleware.
      */
     protected function registerAliasMiddleware()
     {
