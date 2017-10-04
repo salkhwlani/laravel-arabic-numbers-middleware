@@ -2,10 +2,10 @@
 
 namespace Yemenifree\LaravelArabicNumbersMiddleware\Test;
 
-use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
-use Illuminate\Routing\RouteCollection;
 use Illuminate\Routing\Router;
+use Illuminate\Foundation\Application;
+use Illuminate\Routing\RouteCollection;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Yemenifree\LaravelArabicNumbersMiddleware\ServiceProvider;
 

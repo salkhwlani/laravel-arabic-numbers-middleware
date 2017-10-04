@@ -16,7 +16,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     protected $middleware = [
         'arabic-to-eastern' => TransformArabicToEasternNumbers::class,
-        'eastern-to-arabic' => TransformEasternToArabicNumbers::class
+        'eastern-to-arabic' => TransformEasternToArabicNumbers::class,
     ];
 
     /**
@@ -37,7 +37,6 @@ class ServiceProvider extends BaseServiceProvider
      */
     protected $auto_middleware;
 
-
     /**
      * Perform post-registration booting of services.
      *
@@ -51,7 +50,6 @@ class ServiceProvider extends BaseServiceProvider
 
         $this->autoAppendMiddleware();
     }
-
 
     /**
      * auto append middleware to router.
@@ -67,11 +65,9 @@ class ServiceProvider extends BaseServiceProvider
 
         if ($this->groupMiddleware === true) { // Register middleware as global Middleware
             $this->app->make('Illuminate\Contracts\Http\Kernel')->pushMiddleware($this->auto_middleware);
-        } else if (is_array($this->groupMiddleware) && count($this->groupMiddleware) > 0) { // Register Middleware for route group
+        } elseif (is_array($this->groupMiddleware) && count($this->groupMiddleware) > 0) { // Register Middleware for route group
             $this->pushMiddlewareToGroups($this->auto_middleware);
         }
-
-        return;
     }
 
     /**
@@ -79,7 +75,7 @@ class ServiceProvider extends BaseServiceProvider
      *
      * @param $middleware
      */
-    function pushMiddlewareToGroups($middleware)
+    public function pushMiddlewareToGroups($middleware)
     {
         foreach ($this->groupMiddleware as $group) {
             $this->app['router']->pushMiddlewareToGroup($group, $middleware);
