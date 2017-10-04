@@ -59,7 +59,7 @@ Route::any('/login', ['middleware' => 'arabic-to-eastern:pass,test', function ()
 }]);
 ```
 
-> inline ignore fields not work if `auto_register_middleware` enable and middleware you want use inside `auto_middleware` option , instead use can set ignore fields in config file `arabic-numbers-middleware.php`
+> inline ignore fields not work if auto_register_middleware enable and middleware you want to use inside auto_middleware option, instead use can set ignore fields in config file arabic-numbers-middleware.php
 
 ## Optional
 
@@ -146,7 +146,7 @@ $ composer test
 
 ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) and [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) for details.
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Security
 
