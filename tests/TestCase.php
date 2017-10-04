@@ -6,7 +6,6 @@ use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Routing\RouteCollection;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Route;
 use Yemenifree\LaravelArabicNumbersMiddleware\ServiceProvider;
 
 class TestCase extends Orchestra
@@ -63,13 +62,13 @@ class TestCase extends Orchestra
     protected function setUpRoutes($app)
     {
         $this->app->get('router')->setRoutes(new RouteCollection());
-        Route::any('/login-eastern-to-arabic', ['middleware' => 'eastern-to-arabic', $this->responseRequest()]);
-        Route::any('/login-eastern-to-arabic-ignore-pass-field-inline', ['middleware' => 'eastern-to-arabic:pass', $this->responseRequest()]);
-        Route::any('/login-eastern-to-arabic-auto-append', [$this->responseRequest()]);
-        Route::any('/login-arabic-to-eastern', ['middleware' => 'arabic-to-eastern', $this->responseRequest()]);
-        Route::any('/login-arabic-to-eastern-ignore-pass-field-inline', ['middleware' => 'arabic-to-eastern:pass', $this->responseRequest()]);
-        Route::any('/login-arabic-to-eastern-auto-append', [$this->responseRequest()]);
-        Route::any('/login-normal', [$this->responseRequest()]);
+        $this->app->get('router')->any('/login-eastern-to-arabic', ['middleware' => 'eastern-to-arabic', $this->responseRequest()]);
+        $this->app->get('router')->any('/login-eastern-to-arabic-ignore-pass-field-inline', ['middleware' => 'eastern-to-arabic:pass', $this->responseRequest()]);
+        $this->app->get('router')->any('/login-eastern-to-arabic-auto-append', [$this->responseRequest()]);
+        $this->app->get('router')->any('/login-arabic-to-eastern', ['middleware' => 'arabic-to-eastern', $this->responseRequest()]);
+        $this->app->get('router')->any('/login-arabic-to-eastern-ignore-pass-field-inline', ['middleware' => 'arabic-to-eastern:pass', $this->responseRequest()]);
+        $this->app->get('router')->any('/login-arabic-to-eastern-auto-append', [$this->responseRequest()]);
+        $this->app->get('router')->any('/login-normal', [$this->responseRequest()]);
     }
 
     /**
