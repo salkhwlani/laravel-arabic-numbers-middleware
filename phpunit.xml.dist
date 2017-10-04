@@ -8,7 +8,8 @@
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
-         stopOnFailure="false">
+         stopOnFailure="false"
+         syntaxCheck="true">
     <testsuites>
         <testsuite name="Test Suite">
             <directory>tests</directory>
@@ -22,4 +23,9 @@
     <php>
         <env name="APP_URL" value="http://localhost"/>
     </php>
+    <logging>
+        <log type="coverage-html" target="./report" charset="UTF-8"
+             yui="true" highlight="true"
+             lowUpperBound="50" highLowerBound="80" />
+    </logging>
 </phpunit>
