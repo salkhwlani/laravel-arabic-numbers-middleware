@@ -41,7 +41,7 @@ abstract class BaseNumbersMiddleware extends TransformsRequest
 
     /**
      * get options from config
-     * @param $key
+     * @param string $key
      * @param null $default
      * @return array
      */
@@ -53,7 +53,7 @@ abstract class BaseNumbersMiddleware extends TransformsRequest
     /**
      * check if transform from (arabic|english) to eastern
      *
-     * @return string
+     * @return boolean
      */
     public function isFromArabic()
     {
@@ -79,7 +79,7 @@ abstract class BaseNumbersMiddleware extends TransformsRequest
     /**
      * transform eastern/(arabic|english) numbers to (arabic|english)/eastern numbers inside string
      *
-     * @param $value
+     * @param string $value
      * @return string
      */
     protected function transformNumber($value)
@@ -90,7 +90,7 @@ abstract class BaseNumbersMiddleware extends TransformsRequest
     /**
      * get array numbers to transforms
      *
-     * @return array
+     * @return string
      */
     protected function getNumbers()
     {
@@ -100,7 +100,7 @@ abstract class BaseNumbersMiddleware extends TransformsRequest
     /**
      * check if transform from (arabic|english) to eastern
      *
-     * @return string
+     * @return boolean
      */
     public function isFromEastern()
     {
