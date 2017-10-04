@@ -7,7 +7,7 @@ class TransformArabicToEasternNumbers extends BaseNumbersMiddleware
     protected $from = 'arabic';
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getExcept()
     {

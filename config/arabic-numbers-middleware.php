@@ -22,7 +22,7 @@ return [
      |  Supported Middleware: "arabic-to-eastern", "eastern-to-arabic"
      */
     'auto_middleware' => [
-        Yemenifree\LaravelArabicNumbersMiddleware\Middleware\TransformEasternToArabicNumbers::class
+        Yemenifree\LaravelArabicNumbersMiddleware\Middleware\TransformEasternToArabicNumbers::class,
     ],
 
     /*
@@ -59,5 +59,5 @@ return [
      */
     'except_from_arabic_to_eastern' => [
         // 'mobile'
-    ]
+    ],
 ];

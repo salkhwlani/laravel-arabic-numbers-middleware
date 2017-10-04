@@ -30,7 +30,7 @@ abstract class BaseNumbersMiddleware extends TransformsRequest
     }
 
     /**
-     * get except fields
+     * get except fields.
      *
      * @return array
      */
@@ -40,7 +40,7 @@ abstract class BaseNumbersMiddleware extends TransformsRequest
     }
 
     /**
-     * get options from config
+     * get options from config.
      * @param string $key
      * @param null $default
      * @return array
@@ -51,9 +51,9 @@ abstract class BaseNumbersMiddleware extends TransformsRequest
     }
 
     /**
-     * check if transform from (arabic|english) to eastern
+     * check if transform from (arabic|english) to eastern.
      *
-     * @return boolean
+     * @return bool
      */
     public function isFromArabic()
     {
@@ -77,7 +77,7 @@ abstract class BaseNumbersMiddleware extends TransformsRequest
     }
 
     /**
-     * transform eastern/(arabic|english) numbers to (arabic|english)/eastern numbers inside string
+     * transform eastern/(arabic|english) numbers to (arabic|english)/eastern numbers inside string.
      *
      * @param string $value
      * @return string
@@ -88,7 +88,7 @@ abstract class BaseNumbersMiddleware extends TransformsRequest
     }
 
     /**
-     * get array numbers to transforms
+     * get array numbers to transforms.
      *
      * @return string
      */
@@ -98,9 +98,9 @@ abstract class BaseNumbersMiddleware extends TransformsRequest
     }
 
     /**
-     * check if transform from (arabic|english) to eastern
+     * check if transform from (arabic|english) to eastern.
      *
-     * @return boolean
+     * @return bool
      */
     public function isFromEastern()
     {
@@ -108,7 +108,7 @@ abstract class BaseNumbersMiddleware extends TransformsRequest
     }
 
     /**
-     * Get eastern numbers array
+     * Get eastern numbers array.
      *
      * @return array
      */

@@ -2,7 +2,6 @@
 
 namespace Yemenifree\LaravelArabicNumbersMiddleware\Test;
 
-
 use Yemenifree\LaravelArabicNumbersMiddleware\Middleware\TransformArabicToEasternNumbers;
 
 class ArabicMiddlewareTest extends TestCase
@@ -54,5 +53,4 @@ class ArabicMiddlewareTest extends TestCase
         parent::getEnvironmentSetUp($app);
         $app['config']->set('arabic-numbers-middleware.auto_middleware', TransformArabicToEasternNumbers::class);
     }
-
 }

@@ -2,8 +2,8 @@
 
 namespace Yemenifree\LaravelArabicNumbersMiddleware\Test;
 
-use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Application;
 use Illuminate\Routing\RouteCollection;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Yemenifree\LaravelArabicNumbersMiddleware\ServiceProvider;
@@ -31,7 +31,7 @@ class TestCase extends Orchestra
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function getEnvironmentSetUp($app)
     {
@@ -39,7 +39,7 @@ class TestCase extends Orchestra
     }
 
     /**
-     * refresh (reboot) app
+     * refresh (reboot) app.
      *
      * because auto register middleware as global happen when boot app so if we need disabled it we need reboot app also
      */
