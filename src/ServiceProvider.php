@@ -77,8 +77,9 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function pushMiddlewareToGroups($middleware)
     {
-        if (!is_array($this->groupMiddleware))
+        if (! is_array($this->groupMiddleware)) {
             return;
+        }
 
         foreach ($this->groupMiddleware as $group) {
             $this->app['router']->pushMiddlewareToGroup($group, $middleware);
