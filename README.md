@@ -3,6 +3,7 @@
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
 [![Build Status][ico-travis]][link-travis]
+[![StyleCI][ico-styleCi]][link-styleCi]
 [![Coverage Status][ico-scrutinizer]][link-scrutinizer]
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
@@ -167,6 +168,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/yemenifree/laravel-arabic-numbers-middleware.svg?style=flat-square
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/yemenifree/laravel-arabic-numbers-middleware.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/yemenifree/laravel-arabic-numbers-middleware.svg?style=flat-square
+[ico-styleCi]: https://styleci.io/repos/105763061/shield?branch=master&style=flat
 
 [link-packagist]: https://packagist.org/packages/yemenifree/laravel-arabic-numbers-middleware
 [link-travis]: https://travis-ci.org/yemenifree/laravel-arabic-numbers-middleware
@@ -175,3 +177,4 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-downloads]: https://packagist.org/packages/yemenifree/laravel-arabic-numbers-middleware
 [link-author]: https://github.com/yemenifree
 [link-contributors]: ../../contributors
+[link-styleCi]: https://styleci.io/repos/105763061

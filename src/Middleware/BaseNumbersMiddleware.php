@@ -16,7 +16,7 @@ abstract class BaseNumbersMiddleware extends TransformsRequest
     /** @var array */
     protected $easternNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
 
-    /** @var array */
+    /** @var array|mixed */
     protected $config;
 
     /**

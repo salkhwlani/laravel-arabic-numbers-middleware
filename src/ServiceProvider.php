@@ -33,9 +33,9 @@ class ServiceProvider extends BaseServiceProvider
     /**
      * auto append middleware
      *
-     * @var array
+     * @var Collection
      */
-    protected $auto_middleware = [];
+    protected $auto_middleware;
 
 
     /**
