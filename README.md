@@ -60,7 +60,7 @@ Route::any('/login', ['middleware' => 'arabic-to-eastern:pass,test', function ()
 }]);
 ```
 
-> inline ignore fields not work if auto_register_middleware enable and middleware you want to use inside auto_middleware option, instead use can set ignore fields in config file arabic-numbers-middleware.php
+> inline ignore fields not work if auto_register_middleware enable and middleware you want to use inside auto_middleware option, instead you can set ignore fields in config file arabic-numbers-middleware.php
 
 ## Optional
 
@@ -88,7 +88,7 @@ return [
 
     /*
      |--------------------------------------------------------------------------
-     | list of middleware they will resisted for all requests automatic by package
+     | list of middleware they will register for all requests automatic by package
      |--------------------------------------------------------------------------
      |
      |  Supported Middleware: "arabic-to-eastern", "eastern-to-arabic"
@@ -97,10 +97,10 @@ return [
 
     /*
      |--------------------------------------------------------------------------
-     | except fields ( POST | GET ) to ignore transform from all middleware
+     | except transform fields ( POST | GET ) from all middleware
      |--------------------------------------------------------------------------
      |
-     | all none string will be ignore, you can ignore fields by name (key) of POST or GET
+     | all none string value will be ignore by default, you can ignore fields by name (key) of POST or GET
      |
     */
     'except_from_all' => [
@@ -109,10 +109,10 @@ return [
 
     /*
      |--------------------------------------------------------------------------
-     | except fields ( POST | GET ) to ignore transform from eastern to arabic
+     | except transform fields ( POST | GET ) from eastern to arabic
      |--------------------------------------------------------------------------
      |
-     | all none string will be ignore, you can ignore fields by name (key) of POST or GET
+     | all none string value will be ignore by default, you can ignore fields by name (key) of POST or GET
      |
      */
     'except_from_eastern_to_arabic' => [
@@ -121,10 +121,10 @@ return [
 
     /*
      |--------------------------------------------------------------------------
-     | except fields ( POST | GET ) to ignore transform from arabic to eastern
+     | except transform fields ( POST | GET ) from arabic to eastern
      |--------------------------------------------------------------------------
      |
-     | all none string will be ignore, you can ignore fields by name (key) of POST or GET
+     | all none string value will be ignore by default, you can ignore fields by name (key) of POST or GET
      |
      */
     'except_from_arabic_to_eastern' => [

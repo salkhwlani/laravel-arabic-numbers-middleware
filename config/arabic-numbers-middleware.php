@@ -25,10 +25,10 @@ return [
 
     /*
      |--------------------------------------------------------------------------
-     | except fields ( POST | GET ) to ignore transform from all middleware
+     | except transform fields ( POST | GET ) from all middleware
      |--------------------------------------------------------------------------
      |
-     | all none string will be ignore, you can ignore fields by name (key) of POST or GET
+     | all none string value will be ignore by default, you can ignore fields by name (key) of POST or GET
      |
     */
     'except_from_all' => [
@@ -37,10 +37,10 @@ return [
 
     /*
      |--------------------------------------------------------------------------
-     | except fields ( POST | GET ) to ignore transform from eastern to arabic
+     | except transform fields ( POST | GET ) from eastern to arabic
      |--------------------------------------------------------------------------
      |
-     | all none string will be ignore, you can ignore fields by name (key) of POST or GET
+     | all none string value will be ignore by default, you can ignore fields by name (key) of POST or GET
      |
      */
     'except_from_eastern_to_arabic' => [
@@ -49,10 +49,10 @@ return [
 
     /*
      |--------------------------------------------------------------------------
-     | except fields ( POST | GET ) to ignore transform from arabic to eastern
+     | except transform fields ( POST | GET ) from arabic to eastern
      |--------------------------------------------------------------------------
      |
-     | all none string will be ignore, you can ignore fields by name (key) of POST or GET
+     | all none string value will be ignore by default, you can ignore fields by name (key) of POST or GET
      |
      */
     'except_from_arabic_to_eastern' => [
