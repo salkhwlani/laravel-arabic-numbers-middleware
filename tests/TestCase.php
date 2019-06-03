@@ -57,7 +57,7 @@ class TestCase extends Orchestra
         $this->setUp();
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->setUpRoutes($this->app);

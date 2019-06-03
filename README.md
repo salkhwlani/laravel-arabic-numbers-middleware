@@ -12,6 +12,12 @@
 
 * These numbers are known as أرقام هندية ("Indian numbers") in Arabic. They are sometimes also called "Indic numerals" in English. However, that is sometimes discouraged as it can lead to confusion with Indian numerals
 
+## Support version
+
+| **Laravel**  |  **laravel-modules** |
+|---|---|
+| 5.1  | ^1.0  |
+| 5.8  | ^2.0  |
 
 ## Install
 

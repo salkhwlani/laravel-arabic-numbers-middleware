@@ -4,13 +4,11 @@ namespace Yemenifree\LaravelArabicNumbersMiddleware\Middleware;
 
 class TransformEasternToArabicNumbers extends BaseNumbersMiddleware
 {
-    protected $from = 'eastern';
-
     /**
      * {@inheritdoc}
      */
-    public function getExcept()
+    public function getExcept(): array
     {
-        return parent::getExcept() + $this->getOption('except_from_eastern_to_arabic', []);
+        return array_merge(parent::getExcept(), $this->getOption('except_from_eastern_to_arabic', []));
     }
 }

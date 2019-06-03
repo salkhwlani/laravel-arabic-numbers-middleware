@@ -4,6 +4,7 @@ namespace Yemenifree\LaravelArabicNumbersMiddleware\Middleware;
 
 use Illuminate\Config\Repository;
 use Illuminate\Foundation\Http\Middleware\TransformsRequest;
+use Illuminate\Support\Arr;
 
 abstract class BaseNumbersMiddleware extends TransformsRequest
 {
@@ -20,6 +21,13 @@ abstract class BaseNumbersMiddleware extends TransformsRequest
     protected $config;
 
     /**
+     * The additional attributes passed to the middleware.
+     *
+     * @var array
+     */
+    protected $attributes = [];
+
+    /**
      * BaseNumbersMiddleware constructor.
      *
      * @param Repository $config
@@ -30,13 +38,28 @@ abstract class BaseNumbersMiddleware extends TransformsRequest
     }
 
     /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @param  array  ...$attributes
+     * @return mixed
+     */
+    public function handle($request, \Closure $next, ...$attributes)
+    {
+        $this->attributes = $attributes;
+
+        return parent::handle($request,$next);
+    }
+
+    /**
      * get except fields.
      *
      * @return array
      */
-    public function getExcept()
+    public function getExcept(): array
     {
-        return $this->except + $this->getOption('except_from_all', []) + $this->attributes;
+        return array_merge($this->except, $this->getOption('except_from_all', [])) + $this->attributes;
     }
 
     /**
@@ -45,9 +68,9 @@ abstract class BaseNumbersMiddleware extends TransformsRequest
      * @param null $default
      * @return array
      */
-    protected function getOption($key, $default = null)
+    protected function getOption($key, $default = null): array
     {
-        return array_get($this->config, $key, $default);
+        return Arr::get($this->config, $key, $default);
     }
 
     /**
@@ -72,7 +95,7 @@ abstract class BaseNumbersMiddleware extends TransformsRequest
      * @param string $value
      * @return string
      */
-    protected function transformNumber($value)
+    protected function transformNumber($value): string
     {
         return strtr($value, $this->getNumbers());
     }
@@ -82,7 +105,7 @@ abstract class BaseNumbersMiddleware extends TransformsRequest
      *
      * @return array
      */
-    protected function getNumbers()
+    protected function getNumbers(): array
     {
         return $this->isFromEastern() ? array_flip($this->getEasternNumbers()) : $this->getEasternNumbers();
     }
@@ -92,7 +115,7 @@ abstract class BaseNumbersMiddleware extends TransformsRequest
      *
      * @return bool
      */
-    public function isFromEastern()
+    public function isFromEastern(): bool
     {
         return $this->from === 'eastern';
     }
@@ -102,7 +125,7 @@ abstract class BaseNumbersMiddleware extends TransformsRequest
      *
      * @return array
      */
-    public function getEasternNumbers()
+    public function getEasternNumbers(): array
     {
         return $this->easternNumbers;
     }

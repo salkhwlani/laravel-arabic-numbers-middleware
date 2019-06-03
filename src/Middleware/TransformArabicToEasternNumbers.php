@@ -9,8 +9,8 @@ class TransformArabicToEasternNumbers extends BaseNumbersMiddleware
     /**
      * {@inheritdoc}
      */
-    public function getExcept()
+    public function getExcept(): array
     {
-        return parent::getExcept() + $this->getOption('except_from_arabic_to_eastern', []);
+        return array_merge(parent::getExcept(), $this->getOption('except_from_arabic_to_eastern', []));
     }
 }
