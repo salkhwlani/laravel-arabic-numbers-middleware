@@ -25,12 +25,12 @@
         }
     ],
     "require": {
-        "illuminate/support": "^5.8|^6.0|^7.0|^8.0"
+        "illuminate/support": "^5.8|^6.0|^7.0|^8.0|^9.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^3.5",
-        "phpunit/phpunit": "^7.0",
-        "squizlabs/php_codesniffer": "^2.3"
+        "orchestra/testbench": "^3.5|^3.6",
+        "phpunit/phpunit": "^7.0|^8.0|^9.5",
+        "squizlabs/php_codesniffer": "^2.3|^3.6"
     },
     "autoload": {
         "psr-4": {
